@@ -27,6 +27,8 @@
 
 #define BRIGHTNESS_UP 24 // untuk menambah kecerahan tombol panah atas
 #define BRIGHTNESS_DN 82 // untuk mengurangi kecerahan tombol panah bawah
+#define MIN_BRIGHTNESS 1 // kecerahan minimal
+#define MAX_BRIGHTNESS 50 // kecerahan maksinal
 
 // definisi jenis remote
 #define IR_SMALLD_NEC
@@ -347,12 +349,12 @@ void loop()
 
     case BRIGHTNESS_UP:
       brightness++;
-      brightness = brightness > 100 ? 100 : brightness;
+      brightness = brightness > MAX_BRIGHTNESS ? MAX_BRIGHTNESS : brightness;
       dmd.setBrightness(brightness);
       break;
     case BRIGHTNESS_DN:
       brightness--;
-      brightness = brightness < 0 ? 0 : brightness;
+      brightness = brightness < MIN_BRIGHTNESS ? MIN_BRIGHTNESS : brightness;
       dmd.setBrightness(brightness);
       break;
 
